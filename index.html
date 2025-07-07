@@ -1,147 +1,260 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sandy | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <title>Sandy 🌙 Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body {
-      margin: 0;
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+    html, body {
+      margin: 0; padding: 0; box-sizing: border-box;
       font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(135deg, #3a0ca3, #4361ee);
+      background: #0f0c29;
       color: #fff;
-      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle, rgba(0,255,255,0.1), transparent), url('https://i.ibb.co/2tsMPLz/particles.gif');
+      background-size: cover;
+      z-index: -1;
+      opacity: 0.2;
     }
     header {
-      text-align: center;
-      padding: 80px 20px 40px;
+      position: fixed; top: 0; width: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 1rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid #ff0080;
+      z-index: 1000;
     }
     header h1 {
-      font-size: 3em;
-      margin: 0;
+      color: #ff0080; text-shadow: 0 0 10px #ff0080;
     }
-    header p {
-      font-size: 1.2em;
-      max-width: 600px;
-      margin: 10px auto;
+    header ul {
+      list-style: none; display: flex;
     }
+    header ul li {
+      margin-left: 1.5rem;
+    }
+    header ul li a {
+      color: #fff; text-decoration: none;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+    header ul li a:hover {
+      color: #00ffff; text-shadow: 0 0 5px #00ffff;
+    }
+
     section {
-      padding: 60px 20px;
-      text-align: center;
+      padding: 120px 20px 80px;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
     }
-    .skills, .projects {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+    .glitch {
+      font-size: 2.5rem;
+      color: #00ffff;
+      position: relative;
+      animation: glitch 1s infinite;
+      text-shadow: 2px 2px #ff0080, -2px -2px #ff0080;
     }
-    .card {
+    @keyframes glitch {
+      0% { text-shadow: 2px 2px #ff0080, -2px -2px #ff0080; }
+      20% { text-shadow: -2px -2px #00ffff, 2px 2px #ff0080; }
+      40% { text-shadow: 2px -2px #ff0080, -2px 2px #00ffff; }
+      60% { text-shadow: -2px 2px #ff0080, 2px -2px #00ffff; }
+      80% { text-shadow: 2px 2px #00ffff, -2px -2px #ff0080; }
+      100% { text-shadow: 2px 2px #ff0080, -2px -2px #ff0080; }
+    }
+    .content {
+      max-width: 900px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid #00ffff;
+      box-shadow: 0 0 20px rgba(0,255,255,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .content:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 30px rgba(0,255,255,0.6);
+    }
+    h2.section-title {
+      margin-bottom: 2rem;
+      font-size: 2.2rem;
+      color: #ff0080;
+      text-shadow: 0 0 10px #ff0080;
+    }
+    .skills-bar {
+      margin: 1rem 0;
+      text-align: left;
+    }
+    .skill-name {
+      margin-bottom: 0.3rem;
+      font-weight: bold;
+    }
+    .bar {
+      height: 10px;
       background: rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      padding: 20px;
-      width: 200px;
-      backdrop-filter: blur(10px);
-      transition: transform 0.3s;
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0 0 5px #00ffff;
     }
-    .card:hover {
-      transform: translateY(-10px);
+    .bar-fill {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #00ffff, #ff0080);
+      animation: fillBar 2s forwards;
     }
-    .card img {
-      width: 60px;
-      margin-bottom: 10px;
+    @keyframes fillBar {
+      to { width: var(--width); }
     }
-    a {
-      color: #ffb703;
-      text-decoration: none;
+    button {
+      margin-top: 2rem;
+      padding: 0.8rem 2rem;
+      background: #ff0080;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-shadow: 0 0 5px #ff0080;
+      box-shadow: 0 0 15px #ff0080;
+      transition: all 0.3s;
     }
-    a:hover {
-      text-decoration: underline;
+    button:hover {
+      background: #ff4da6;
+      box-shadow: 0 0 25px #ff4da6;
     }
-    .contact-links a {
-      display: inline-block;
-      margin: 10px;
-      padding: 10px 20px;
-      border: 2px solid #ffb703;
-      border-radius: 8px;
-      transition: background 0.3s;
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #ff0080;
+      color: #aaa;
+      background: rgba(0, 0, 0, 0.5);
     }
-    .contact-links a:hover {
-      background: #ffb703;
-      color: #000;
+    ul {
+      list-style: none; padding-left: 0; text-align: left;
     }
-    @media(max-width: 600px) {
-      header h1 {
-        font-size: 2em;
-      }
-      .card {
-        width: 100%;
-      }
+    ul li {
+      margin-bottom: 0.8rem;
+    }
+    ul li::before {
+      content: "✦ ";
+      color: #00ffff;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Hi, I'm Sandy 🎭</h1>
-    <p>Dynamic IT student, Security-focused Full-stack Developer, and Digital Marketing Expert from India 🇮🇳. Passionate learner, gamer, and solopreneur.</p>
-    <a href="#contact">Hire Me</a>
-  </header>  <section id="skills">
-    <h2>⚡ Skills & Expertise</h2>
-    <div class="skills">
-      <div class="card">
-        <img src="https://img.icons8.com/3d-fluency/94/hacker.png" alt="Hacking" />
-        <p>Hacking (Learning)</p>
+    <h1>Sandy 🌙</h1>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#medals">Medals</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#collections">Collections</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </header>
+
+  <section id="hero">
+    <div class="glitch">Hello, I'm Sandy 🌙</div>
+    <p>Security-aware Full-stack Web & Mobile Developer, Digital Marketer, Cybersecurity Enthusiast & Solopreneur</p>
+    <button onclick="scrollToSection('contact')">Hire Me</button>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="content">
+      <p>
+        I am a dynamic and multifaceted professional with expertise spanning digital marketing (SMM, SMMA, e-commerce, ClickBank, freelancing), dropshipping, and reselling. Skilled in developing and selling digital products, I bring a strong foundation in business management, mentoring, and innovative strategies.
+      </p>
+      <p>
+        With advanced proficiency in AI, programming, and web development, I create impactful websites and manage digital platforms, including Instagram theme pages. My background also includes graphic design, video editing, bot designing, and APK modding (now discontinued).
+      </p>
+      <p>
+        I am well-versed in Linux (ParrotOS), web security, phishing, PC/Android accessing, and Termux, and I am an expert in various aspects of hacking (learning), cracking, and digital security.
+      </p>
+      <p>
+        As a marketing expert, business guide, solopreneur, and gaming enthusiast (Minecraft 🥰), I have a passion for side hustles and believe in continuous learning, self-reliance, and excellence.
+      </p>
+    </div>
+  </section>
+
+  <section id="medals">
+    <h2 class="section-title">Medals & Achievements</h2>
+    <div class="content">
+      <p>• Security-aware Full-stack Web & Mobile Developer (iOS/Android)</p>
+      <p>• Proficient in DevSecOps, integrating security into development lifecycles</p>
+      <p>• Advanced security engineering across Cloud, Automation, Data, and Privacy</p>
+      <p>• Expert in building and maintaining secure applications and infrastructure</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="content">
+      <div class="skills-bar">
+        <div class="skill-name">Digital Marketing & Social Media</div>
+        <div class="bar"><div class="bar-fill" style="--width: 95%;"></div></div>
       </div>
-      <div class="card">
-        <img src="https://img.icons8.com/3d-fluency/94/source-code.png" alt="Programming" />
-        <p>Programming</p>
+      <div class="skills-bar">
+        <div class="skill-name">AI & Automation</div>
+        <div class="bar"><div class="bar-fill" style="--width: 90%;"></div></div>
       </div>
-      <div class="card">
-        <img src="https://img.icons8.com/3d-fluency/94/linux.png" alt="Linux" />
-        <p>Linux & ParrotOS</p>
+      <div class="skills-bar">
+        <div class="skill-name">Full-stack Development</div>
+        <div class="bar"><div class="bar-fill" style="--width: 95%;"></div></div>
       </div>
-      <div class="card">
-        <img src="https://img.icons8.com/3d-fluency/94/paint-palette.png" alt="Design" />
-        <p>Graphics & Logos</p>
+      <div class="skills-bar">
+        <div class="skill-name">Cybersecurity & Hacking</div>
+        <div class="bar"><div class="bar-fill" style="--width: 92%;"></div></div>
       </div>
-      <div class="card">
-        <img src="https://img.icons8.com/3d-fluency/94/bot.png" alt="Bots" />
-        <p>Bot Designer</p>
-      </div>
-      <div class="card">
-        <img src="https://img.icons8.com/3d-fluency/94/web.png" alt="Web Security" />
-        <p>Web Security Helper</p>
-      </div>
-      <div class="card">
-        <img src="https://img.icons8.com/3d-fluency/94/marketing.png" alt="Marketing" />
-        <p>Marketing & Biz Guide</p>
-      </div>
-      <div class="card">
-        <img src="https://img.icons8.com/3d-fluency/94/controller.png" alt="Gaming" />
-        <p>Skilled Gamer</p>
+      <div class="skills-bar">
+        <div class="skill-name">Graphic Design & Video Editing</div>
+        <div class="bar"><div class="bar-fill" style="--width: 88%;"></div></div>
       </div>
     </div>
-  </section>  <section id="projects">
-    <h2>🚀 Featured Projects</h2>
-    <div class="projects">
-      <div class="card">
-        <img src="https://img.icons8.com/3d-fluency/94/github.png" alt="GitHub" />
-        <p><a href="https://github.com/coderwizy" target="_blank">My GitHub Repos</a></p>
-      </div>
-      <div class="card">
-        <img src="https://img.icons8.com/3d-fluency/94/cloud.png" alt="Guns.lol" />
-        <p><a href="https://guns.lol/shieldwiz" target="_blank">guns.lol Profile</a></p>
-      </div>
+  </section>
+
+  <section id="collections">
+    <h2 class="section-title">Collections</h2>
+    <div class="content">
+      <ul>
+        <li>Hacker High School E-Book</li>
+        <li>Top E-books for Beginners: Being a Hacker, Windows & Linux, Ports & Protocols, Malware, etc.</li>
+        <li>Adobe Photoshop Professional Course</li>
+        <li>Virtual Assistant Course</li>
+        <li>Shopify Dropshipping Course</li>
+        <li>WordPress Mastery</li>
+        <li>SEO Masterclass</li>
+        <li>Video Editing Course</li>
+        <li>iOS & Android App Development</li>
+        <li>Google & Facebook Ads</li>
+        <li>Email Marketing & Content Writing</li>
+        <li>3D Animation & Advanced Graphics</li>
+        <li>Premium Digital Product Bundles & Templates</li>
+      </ul>
     </div>
-  </section>  <section id="bio">
-    <h2>🌀 About Me</h2>
-    <p>I am a dynamic and multifaceted professional with expertise spanning digital marketing (SMM, SMMA, e-commerce, ClickBank, and freelancing), dropshipping, and reselling. Skilled in developing and selling digital products, I bring a strong foundation in business management, mentoring, and innovative strategies. With advanced proficiency in AI, programming, and web development, I create impactful websites and manage digital platforms, including Instagram theme pages. My background also includes graphic design, video editing, bot designing, and APK modding (now discontinued). I am well-versed in Linux (ParrotOS), web security, phishing, PC/Android accessing, and Termux, and I am an expert in the use of Termux, along with various aspects of hacking (learning), cracking, and digital security. As a marketing expert, business guide, solopreneur, and gaming enthusiast (Minecraft 🥰), I have a passion for side hustles and believe in continuous learning, self-reliance, and excellence.</p>
-  </section>  <section id="contact">
-    <h2>📞 Contact</h2>
-    <div class="contact-links">
-      <a href="https://github.com/coderwizy" target="_blank">GitHub</a>
-      <a href="https://guns.lol/shieldwiz" target="_blank">guns.lol</a>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <div class="content">
+      <p>💬 Discord: <strong>coderwizy</strong></p>
+      <p>🌐 Let's connect and create something extraordinary together!</p>
     </div>
-  </section>  <footer style="text-align:center; padding:20px;">
-    <p>© 2025 Sandy. All rights reserved.</p>
-  </footer></body>
+  </section>
+
+  <footer>
+    &copy; 2025 Sandy 🌙. All rights reserved.
+  </footer>
+
+  <script>
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
 </html>
