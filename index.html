@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <title>Sandy 🌙 Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
@@ -13,107 +16,45 @@
       --bg: #0f0c29;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Orbitron', sans-serif;
-      background: var(--bg);
-      color: #fff;
-      overflow-x: hidden;
-    }
-
-    /* ========== HEADER ========== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Orbitron', sans-serif; background: var(--bg); color: #fff; overflow-x: hidden; }
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: rgba(0, 0, 0, 0.7);
-      border-bottom: 1px solid var(--secondary);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 999;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem; background: rgba(0, 0, 0, 0.7);
+      border-bottom: 1px solid var(--secondary); position: fixed; width: 100%; top: 0; z-index: 999;
     }
-
-    header h1 {
-      color: var(--secondary);
-      text-shadow: 0 0 10px var(--secondary);
-    }
-
-    nav {
-      display: flex;
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 1rem;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.3s, text-shadow 0.3s;
-    }
-
-    nav a:hover {
-      color: var(--primary);
-      text-shadow: 0 0 5px var(--primary);
-    }
-
-    /* Mobile nav toggle */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    .menu-toggle span {
-      height: 3px;
-      width: 25px;
-      background: var(--primary);
-      margin: 4px 0;
-      border-radius: 2px;
-    }
-
+    header h1 { color: var(--secondary); text-shadow: 0 0 10px var(--secondary); }
+    nav { display: flex; }
+    nav ul { display: flex; list-style: none; gap: 1rem; }
+    nav a { color: #fff; text-decoration: none; transition: color 0.3s, text-shadow 0.3s; }
+    nav a:hover { color: var(--primary); text-shadow: 0 0 5px var(--primary); }
+    .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
+    .menu-toggle span { height: 3px; width: 25px; background: var(--primary); margin: 4px 0; border-radius: 2px; }
     @media(max-width: 768px) {
-      nav ul {
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        background: rgba(0, 0, 0, 0.9);
-        width: 200px;
-        padding: 1rem;
-        display: none;
-      }
-      nav ul.active {
-        display: flex;
-      }
-      .menu-toggle {
-        display: flex;
-      }
+      nav ul { flex-direction: column; position: absolute; top: 70px; right: 0; background: rgba(0, 0, 0, 0.9); width: 200px; padding: 1rem; display: none; }
+      nav ul.active { display: flex; }
+      .menu-toggle { display: flex; }
     }
 
-    /* ========== HERO ========== */
-    #hero {
-      padding: 140px 20px 80px;
-      text-align: center;
-    }
+    section { padding: 100px 20px 60px; text-align: center; }
+    .section-title { font-size: 2rem; color: var(--secondary); text-shadow: 0 0 10px var(--secondary); margin-bottom: 2rem; }
+    .content { max-width: 900px; margin: auto; background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 12px; border: 1px solid var(--primary); box-shadow: 0 0 20px rgba(0,255,255,0.3); backdrop-filter: blur(5px); transition: transform 0.3s, box-shadow 0.3s; }
+    .content:hover { transform: scale(1.02); box-shadow: 0 0 30px rgba(0,255,255,0.6); }
 
-    .glitch {
-      font-size: 2.5rem;
-      color: var(--primary);
-      position: relative;
-      animation: glitch 1s infinite;
-      text-shadow: 2px 2px var(--secondary), -2px -2px var(--secondary);
-    }
+    .skills-bar { margin: 1rem 0; text-align: left; }
+    .skill-name { margin-bottom: 0.3rem; font-weight: bold; }
+    .bar { height: 10px; background: rgba(255, 255, 255, 0.1); border-radius: 5px; overflow: hidden; box-shadow: 0 0 5px var(--primary); }
+    .bar-fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--primary), var(--secondary)); animation: fillBar 2s forwards; }
+    @keyframes fillBar { to { width: var(--width); } }
 
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 1s; }
+    .fade-in.show { opacity: 1; transform: translateY(0); }
+
+    footer { text-align: center; padding: 2rem; border-top: 1px solid var(--secondary); background: rgba(0, 0, 0, 0.5); color: #aaa; }
+
+    /* Hero glitch */
+    #hero { padding: 140px 20px 80px; text-align: center; }
+    .glitch { font-size: 2.5rem; color: var(--primary); animation: glitch 1s infinite; text-shadow: 2px 2px var(--secondary), -2px -2px var(--secondary); }
     @keyframes glitch {
       0%, 100% { text-shadow: 2px 2px var(--secondary), -2px -2px var(--secondary); }
       20% { text-shadow: -2px -2px var(--primary), 2px 2px var(--secondary); }
@@ -122,125 +63,11 @@
       80% { text-shadow: 2px 2px var(--primary), -2px -2px var(--secondary); }
     }
 
-    p {
-      margin-top: 1rem;
-      line-height: 1.6;
-    }
+    button { margin-top: 2rem; padding: 0.8rem 2rem; background: var(--secondary); border: none; color: #fff; border-radius: 5px; font-size: 1rem; cursor: pointer; text-shadow: 0 0 5px var(--secondary); box-shadow: 0 0 15px var(--secondary); transition: all 0.3s; }
+    button:hover { background: #ff4da6; box-shadow: 0 0 25px #ff4da6; }
+    img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 0 20px var(--primary); }
 
-    button {
-      margin-top: 2rem;
-      padding: 0.8rem 2rem;
-      background: var(--secondary);
-      border: none;
-      color: #fff;
-      border-radius: 5px;
-      font-size: 1rem;
-      cursor: pointer;
-      text-shadow: 0 0 5px var(--secondary);
-      box-shadow: 0 0 15px var(--secondary);
-      transition: all 0.3s;
-    }
-
-    button:hover {
-      background: #ff4da6;
-      box-shadow: 0 0 25px #ff4da6;
-    }
-
-    /* ========== SECTIONS ========== */
-    section {
-      padding: 100px 20px 60px;
-      text-align: center;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      color: var(--secondary);
-      text-shadow: 0 0 10px var(--secondary);
-      margin-bottom: 2rem;
-    }
-
-    .content {
-      max-width: 900px;
-      margin: auto;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2rem;
-      border-radius: 12px;
-      border: 1px solid var(--primary);
-      box-shadow: 0 0 20px rgba(0,255,255,0.3);
-      backdrop-filter: blur(5px);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .content:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 30px rgba(0,255,255,0.6);
-    }
-
-    /* ========== SKILLS ========== */
-    .skills-bar {
-      margin: 1rem 0;
-      text-align: left;
-    }
-
-    .skill-name {
-      margin-bottom: 0.3rem;
-      font-weight: bold;
-    }
-
-    .bar {
-      height: 10px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 5px;
-      overflow: hidden;
-      box-shadow: 0 0 5px var(--primary);
-    }
-
-    .bar-fill {
-      height: 100%;
-      width: 0;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      animation: fillBar 2s forwards;
-    }
-
-    @keyframes fillBar {
-      to { width: var(--width); }
-    }
-
-    /* ========== FOOTER ========== */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      border-top: 1px solid var(--secondary);
-      background: rgba(0, 0, 0, 0.5);
-      color: #aaa;
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 0;
-      text-align: left;
-    }
-
-    ul li {
-      margin-bottom: 0.8rem;
-    }
-
-    ul li::before {
-      content: "✦ ";
-      color: var(--primary);
-    }
-
-    /* Fade-in effect */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 1s;
-    }
-    .fade-in.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
+    #three-container { height: 300px; margin-top: 30px; }
   </style>
 </head>
 <body>
@@ -249,9 +76,7 @@
   <header>
     <h1>Sandy 🌙</h1>
     <nav>
-      <div class="menu-toggle" id="menu-toggle">
-        <span></span><span></span><span></span>
-      </div>
+      <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
       <ul id="nav-list">
         <li><a href="#about">About</a></li>
         <li><a href="#medals">Medals</a></li>
@@ -267,21 +92,15 @@
     <div class="glitch">Yo, I'm Sandy 🌙</div>
     <p>Full-stack Cyberpunk Developer, Digital Marketing Legend, Security Beast & Ultimate Hustler 🚀</p>
     <button onclick="scrollToSection('contact')">Hire Me</button>
+    <div id="three-container"></div>
   </section>
 
   <!-- ABOUT -->
   <section id="about" class="fade-in">
     <h2 class="section-title">About Me</h2>
     <div class="content">
-      <p>
-        I'm a dynamic and multifaceted professional with expertise spanning digital marketing (SMM, SMMA, e-commerce, ClickBank, freelancing), dropshipping, and reselling. Skilled in developing and selling digital products, I bring a strong foundation in business management, mentoring, and innovative strategies.
-      </p>
-      <p>
-        With advanced proficiency in AI, programming, and web development, I create impactful websites and manage digital platforms, including Instagram theme pages. My background also includes graphic design, video editing, bot designing, and APK modding (now discontinued).
-      </p>
-      <p>
-        I’m deep into Linux (ParrotOS), web security, phishing, PC/Android accessing, Termux, hacking (learning), cracking, and digital security.
-      </p>
+      <p>Dynamic, multifaceted professional with digital marketing, e-commerce, ClickBank, freelancing, dropshipping, and reselling skills. Master of AI, web dev, graphic design, video editing, bot design, and more.</p>
+      <p>Expert in Linux (ParrotOS), web security, hacking, cracking, Termux, and overall digital security. Always pushing the boundaries!</p>
     </div>
   </section>
 
@@ -290,9 +109,9 @@
     <h2 class="section-title">Medals & Achievements</h2>
     <div class="content">
       <p>Security-aware Full-stack Web & Mobile Developer (iOS/Android)</p>
-      <p>Proficient in DevSecOps, integrating security into development lifecycles</p>
-      <p>Advanced security engineering across Cloud, Automation, Data, and Privacy</p>
-      <p>Expert in building and maintaining secure applications and infrastructure</p>
+      <p>DevSecOps expert, integrates security into lifecycles</p>
+      <p>Cloud, Automation, Data & Privacy Security</p>
+      <p>Strong foundation in secure apps and infrastructure</p>
     </div>
   </section>
 
@@ -301,23 +120,23 @@
     <h2 class="section-title">Skills</h2>
     <div class="content">
       <div class="skills-bar">
-        <div class="skill-name">Digital Marketing & Social Media</div>
+        <div class="skill-name"><i class="fas fa-bolt"></i> Digital Marketing</div>
         <div class="bar"><div class="bar-fill" style="--width: 95%;"></div></div>
       </div>
       <div class="skills-bar">
-        <div class="skill-name">AI & Automation</div>
+        <div class="skill-name"><i class="fas fa-robot"></i> AI & Automation</div>
         <div class="bar"><div class="bar-fill" style="--width: 90%;"></div></div>
       </div>
       <div class="skills-bar">
-        <div class="skill-name">Full-stack Development</div>
+        <div class="skill-name"><i class="fas fa-code"></i> Full-stack Dev</div>
         <div class="bar"><div class="bar-fill" style="--width: 95%;"></div></div>
       </div>
       <div class="skills-bar">
-        <div class="skill-name">Cybersecurity & Hacking</div>
+        <div class="skill-name"><i class="fas fa-shield-alt"></i> Cybersecurity</div>
         <div class="bar"><div class="bar-fill" style="--width: 92%;"></div></div>
       </div>
       <div class="skills-bar">
-        <div class="skill-name">Graphic Design & Video Editing</div>
+        <div class="skill-name"><i class="fas fa-pencil-ruler"></i> Design & Editing</div>
         <div class="bar"><div class="bar-fill" style="--width: 88%;"></div></div>
       </div>
     </div>
@@ -329,20 +148,15 @@
     <div class="content">
       <ul>
         <li>Hacker High School E-Book</li>
-        <li>Top E-books for Beginners: Being a Hacker, Windows & Linux, Ports & Protocols, Malware, etc.</li>
-        <li>Adobe Photoshop Professional Course</li>
-        <li>Virtual Assistant Course</li>
-        <li>Shopify Dropshipping Course</li>
-        <li>WordPress Mastery</li>
-        <li>SEO Masterclass</li>
-        <li>Video Editing Course</li>
-        <li>iOS & Android App Development</li>
-        <li>Google & Facebook Ads</li>
-        <li>Email Marketing & Content Writing</li>
-        <li>3D Animation & Advanced Graphics</li>
-        <li>Premium Digital Product Bundles & Templates</li>
+        <li>Top E-books for Beginners (Windows, Linux, Malware, etc.)</li>
+        <li>Adobe Photoshop Pro Course</li>
+        <li>Virtual Assistant, Shopify, WordPress, SEO Masterclass</li>
+        <li>Video Editing, App Dev, Google/Facebook Ads</li>
+        <li>Email Marketing, Content Writing, 3D Animation</li>
+        <li>Premium Bundles, Templates & Mega Digital Resources</li>
       </ul>
     </div>
+    <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_touohxv0.json" background="transparent" speed="1" style="width: 300px; height: 300px; margin: auto;" loop autoplay></lottie-player>
   </section>
 
   <!-- CONTACT -->
@@ -350,7 +164,7 @@
     <h2 class="section-title">Contact</h2>
     <div class="content">
       <p>💬 Discord: <strong>coderwizy</strong></p>
-      <p>🌐 Let's connect and create something extraordinary together!</p>
+      <p>🌐 Let's connect & build futuristic ideas together!</p>
     </div>
   </section>
 
@@ -360,30 +174,42 @@
   </footer>
 
   <script>
-    // Smooth scroll
     function scrollToSection(id) {
       document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Mobile menu toggle
     const toggle = document.getElementById('menu-toggle');
     const navList = document.getElementById('nav-list');
-
     toggle.addEventListener('click', () => {
       navList.classList.toggle('active');
     });
 
-    // Fade-in on scroll
     const fadeEls = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
-      });
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
     }, { threshold: 0.3 });
-
     fadeEls.forEach(el => observer.observe(el));
+
+    // Three.js 3D element
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setSize(window.innerWidth, 300);
+    document.getElementById('three-container').appendChild(renderer.domElement);
+
+    const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: true });
+    const torusKnot = new THREE.Mesh(geometry, material);
+    scene.add(torusKnot);
+    camera.position.z = 50;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      torusKnot.rotation.x += 0.01;
+      torusKnot.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    }
+    animate();
   </script>
 </body>
 </html>
