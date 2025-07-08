@@ -6,193 +6,298 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-    html, body {
-      margin: 0; padding: 0; box-sizing: border-box;
+
+    :root {
+      --primary: #00ffff;
+      --secondary: #ff0080;
+      --bg: #0f0c29;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'Orbitron', sans-serif;
-      background: #0f0c29;
+      background: var(--bg);
       color: #fff;
       overflow-x: hidden;
     }
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(circle, rgba(0,255,255,0.1), transparent), url('https://i.ibb.co/2tsMPLz/particles.gif');
-      background-size: cover;
-      z-index: -1;
-      opacity: 0.2;
-    }
+
+    /* ========== HEADER ========== */
     header {
-      position: fixed; top: 0; width: 100%;
-      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 1rem 2rem;
-      display: flex; justify-content: space-between; align-items: center;
-      border-bottom: 1px solid #ff0080;
-      z-index: 1000;
-    }
-    header h1 {
-      color: #ff0080; text-shadow: 0 0 10px #ff0080;
-    }
-    header ul {
-      list-style: none; display: flex;
-    }
-    header ul li {
-      margin-left: 1.5rem;
-    }
-    header ul li a {
-      color: #fff; text-decoration: none;
-      transition: color 0.3s, text-shadow 0.3s;
-    }
-    header ul li a:hover {
-      color: #00ffff; text-shadow: 0 0 5px #00ffff;
+      background: rgba(0, 0, 0, 0.7);
+      border-bottom: 1px solid var(--secondary);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 999;
     }
 
-    section {
-      padding: 120px 20px 80px;
-      display: flex; flex-direction: column; align-items: center; text-align: center;
+    header h1 {
+      color: var(--secondary);
+      text-shadow: 0 0 10px var(--secondary);
     }
+
+    nav {
+      display: flex;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1rem;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+      text-shadow: 0 0 5px var(--primary);
+    }
+
+    /* Mobile nav toggle */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: var(--primary);
+      margin: 4px 0;
+      border-radius: 2px;
+    }
+
+    @media(max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: rgba(0, 0, 0, 0.9);
+        width: 200px;
+        padding: 1rem;
+        display: none;
+      }
+      nav ul.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    /* ========== HERO ========== */
+    #hero {
+      padding: 140px 20px 80px;
+      text-align: center;
+    }
+
     .glitch {
       font-size: 2.5rem;
-      color: #00ffff;
+      color: var(--primary);
       position: relative;
       animation: glitch 1s infinite;
-      text-shadow: 2px 2px #ff0080, -2px -2px #ff0080;
+      text-shadow: 2px 2px var(--secondary), -2px -2px var(--secondary);
     }
+
     @keyframes glitch {
-      0% { text-shadow: 2px 2px #ff0080, -2px -2px #ff0080; }
-      20% { text-shadow: -2px -2px #00ffff, 2px 2px #ff0080; }
-      40% { text-shadow: 2px -2px #ff0080, -2px 2px #00ffff; }
-      60% { text-shadow: -2px 2px #ff0080, 2px -2px #00ffff; }
-      80% { text-shadow: 2px 2px #00ffff, -2px -2px #ff0080; }
-      100% { text-shadow: 2px 2px #ff0080, -2px -2px #ff0080; }
+      0%, 100% { text-shadow: 2px 2px var(--secondary), -2px -2px var(--secondary); }
+      20% { text-shadow: -2px -2px var(--primary), 2px 2px var(--secondary); }
+      40% { text-shadow: 2px -2px var(--secondary), -2px 2px var(--primary); }
+      60% { text-shadow: -2px 2px var(--secondary), 2px -2px var(--primary); }
+      80% { text-shadow: 2px 2px var(--primary), -2px -2px var(--secondary); }
     }
+
+    p {
+      margin-top: 1rem;
+      line-height: 1.6;
+    }
+
+    button {
+      margin-top: 2rem;
+      padding: 0.8rem 2rem;
+      background: var(--secondary);
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-shadow: 0 0 5px var(--secondary);
+      box-shadow: 0 0 15px var(--secondary);
+      transition: all 0.3s;
+    }
+
+    button:hover {
+      background: #ff4da6;
+      box-shadow: 0 0 25px #ff4da6;
+    }
+
+    /* ========== SECTIONS ========== */
+    section {
+      padding: 100px 20px 60px;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: var(--secondary);
+      text-shadow: 0 0 10px var(--secondary);
+      margin-bottom: 2rem;
+    }
+
     .content {
       max-width: 900px;
+      margin: auto;
       background: rgba(255, 255, 255, 0.05);
       padding: 2rem;
       border-radius: 12px;
-      border: 1px solid #00ffff;
+      border: 1px solid var(--primary);
       box-shadow: 0 0 20px rgba(0,255,255,0.3);
+      backdrop-filter: blur(5px);
       transition: transform 0.3s, box-shadow 0.3s;
     }
+
     .content:hover {
       transform: scale(1.02);
       box-shadow: 0 0 30px rgba(0,255,255,0.6);
     }
-    h2.section-title {
-      margin-bottom: 2rem;
-      font-size: 2.2rem;
-      color: #ff0080;
-      text-shadow: 0 0 10px #ff0080;
-    }
+
+    /* ========== SKILLS ========== */
     .skills-bar {
       margin: 1rem 0;
       text-align: left;
     }
+
     .skill-name {
       margin-bottom: 0.3rem;
       font-weight: bold;
     }
+
     .bar {
       height: 10px;
       background: rgba(255, 255, 255, 0.1);
       border-radius: 5px;
       overflow: hidden;
-      box-shadow: 0 0 5px #00ffff;
+      box-shadow: 0 0 5px var(--primary);
     }
+
     .bar-fill {
       height: 100%;
       width: 0;
-      background: linear-gradient(90deg, #00ffff, #ff0080);
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
       animation: fillBar 2s forwards;
     }
+
     @keyframes fillBar {
       to { width: var(--width); }
     }
-    button {
-      margin-top: 2rem;
-      padding: 0.8rem 2rem;
-      background: #ff0080;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-      text-shadow: 0 0 5px #ff0080;
-      box-shadow: 0 0 15px #ff0080;
-      transition: all 0.3s;
-    }
-    button:hover {
-      background: #ff4da6;
-      box-shadow: 0 0 25px #ff4da6;
-    }
+
+    /* ========== FOOTER ========== */
     footer {
       text-align: center;
       padding: 2rem;
-      border-top: 1px solid #ff0080;
-      color: #aaa;
+      border-top: 1px solid var(--secondary);
       background: rgba(0, 0, 0, 0.5);
+      color: #aaa;
     }
+
     ul {
-      list-style: none; padding-left: 0; text-align: left;
+      list-style: none;
+      padding-left: 0;
+      text-align: left;
     }
+
     ul li {
       margin-bottom: 0.8rem;
     }
+
     ul li::before {
       content: "✦ ";
-      color: #00ffff;
+      color: var(--primary);
     }
+
+    /* Fade-in effect */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s;
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
   </style>
 </head>
 <body>
 
+  <!-- HEADER -->
   <header>
     <h1>Sandy 🌙</h1>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#medals">Medals</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#collections">Collections</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <nav>
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span><span></span><span></span>
+      </div>
+      <ul id="nav-list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#medals">Medals</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#collections">Collections</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
+  <!-- HERO -->
   <section id="hero">
-    <div class="glitch">Hello, I'm Sandy 🌙</div>
-    <p>Security-aware Full-stack Web & Mobile Developer, Digital Marketer, Cybersecurity Enthusiast & Solopreneur</p>
+    <div class="glitch">Yo, I'm Sandy 🌙</div>
+    <p>Full-stack Cyberpunk Developer, Digital Marketing Legend, Security Beast & Ultimate Hustler 🚀</p>
     <button onclick="scrollToSection('contact')">Hire Me</button>
   </section>
 
-  <section id="about">
+  <!-- ABOUT -->
+  <section id="about" class="fade-in">
     <h2 class="section-title">About Me</h2>
     <div class="content">
       <p>
-        I am a dynamic and multifaceted professional with expertise spanning digital marketing (SMM, SMMA, e-commerce, ClickBank, freelancing), dropshipping, and reselling. Skilled in developing and selling digital products, I bring a strong foundation in business management, mentoring, and innovative strategies.
+        I'm a dynamic and multifaceted professional with expertise spanning digital marketing (SMM, SMMA, e-commerce, ClickBank, freelancing), dropshipping, and reselling. Skilled in developing and selling digital products, I bring a strong foundation in business management, mentoring, and innovative strategies.
       </p>
       <p>
         With advanced proficiency in AI, programming, and web development, I create impactful websites and manage digital platforms, including Instagram theme pages. My background also includes graphic design, video editing, bot designing, and APK modding (now discontinued).
       </p>
       <p>
-        I am well-versed in Linux (ParrotOS), web security, phishing, PC/Android accessing, and Termux, and I am an expert in various aspects of hacking (learning), cracking, and digital security.
-      </p>
-      <p>
-        As a marketing expert, business guide, solopreneur, and gaming enthusiast (Minecraft 🥰), I have a passion for side hustles and believe in continuous learning, self-reliance, and excellence.
+        I’m deep into Linux (ParrotOS), web security, phishing, PC/Android accessing, Termux, hacking (learning), cracking, and digital security.
       </p>
     </div>
   </section>
 
-  <section id="medals">
+  <!-- MEDALS -->
+  <section id="medals" class="fade-in">
     <h2 class="section-title">Medals & Achievements</h2>
     <div class="content">
-      <p>• Security-aware Full-stack Web & Mobile Developer (iOS/Android)</p>
-      <p>• Proficient in DevSecOps, integrating security into development lifecycles</p>
-      <p>• Advanced security engineering across Cloud, Automation, Data, and Privacy</p>
-      <p>• Expert in building and maintaining secure applications and infrastructure</p>
+      <p>Security-aware Full-stack Web & Mobile Developer (iOS/Android)</p>
+      <p>Proficient in DevSecOps, integrating security into development lifecycles</p>
+      <p>Advanced security engineering across Cloud, Automation, Data, and Privacy</p>
+      <p>Expert in building and maintaining secure applications and infrastructure</p>
     </div>
   </section>
 
-  <section id="skills">
+  <!-- SKILLS -->
+  <section id="skills" class="fade-in">
     <h2 class="section-title">Skills</h2>
     <div class="content">
       <div class="skills-bar">
@@ -218,7 +323,8 @@
     </div>
   </section>
 
-  <section id="collections">
+  <!-- COLLECTIONS -->
+  <section id="collections" class="fade-in">
     <h2 class="section-title">Collections</h2>
     <div class="content">
       <ul>
@@ -239,7 +345,8 @@
     </div>
   </section>
 
-  <section id="contact">
+  <!-- CONTACT -->
+  <section id="contact" class="fade-in">
     <h2 class="section-title">Contact</h2>
     <div class="content">
       <p>💬 Discord: <strong>coderwizy</strong></p>
@@ -247,14 +354,36 @@
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     &copy; 2025 Sandy 🌙. All rights reserved.
   </footer>
 
   <script>
+    // Smooth scroll
     function scrollToSection(id) {
       document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     }
+
+    // Mobile menu toggle
+    const toggle = document.getElementById('menu-toggle');
+    const navList = document.getElementById('nav-list');
+
+    toggle.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+
+    // Fade-in on scroll
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    fadeEls.forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
