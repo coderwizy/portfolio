@@ -2,214 +2,330 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Sandy 🌙 Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <title>Sandy🌙 - Galactic God Mode Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
-    :root {
-      --primary: #00ffff;
-      --secondary: #ff0080;
-      --bg: #0f0c29;
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: "Poppins", sans-serif;
+      scroll-behavior: smooth;
+      background: #0f0c29;
+      color: #fff;
     }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Orbitron', sans-serif; background: var(--bg); color: #fff; overflow-x: hidden; }
-    header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1rem 2rem; background: rgba(0, 0, 0, 0.7);
-      border-bottom: 1px solid var(--secondary); position: fixed; width: 100%; top: 0; z-index: 999;
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      z-index: 20;
     }
-    header h1 { color: var(--secondary); text-shadow: 0 0 10px var(--secondary); }
-    nav { display: flex; }
-    nav ul { display: flex; list-style: none; gap: 1rem; }
-    nav a { color: #fff; text-decoration: none; transition: color 0.3s, text-shadow 0.3s; }
-    nav a:hover { color: var(--primary); text-shadow: 0 0 5px var(--primary); }
-    .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
-    .menu-toggle span { height: 3px; width: 25px; background: var(--primary); margin: 4px 0; border-radius: 2px; }
-    @media(max-width: 768px) {
-      nav ul { flex-direction: column; position: absolute; top: 70px; right: 0; background: rgba(0, 0, 0, 0.9); width: 200px; padding: 1rem; display: none; }
-      nav ul.active { display: flex; }
-      .menu-toggle { display: flex; }
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
     }
-
-    section { padding: 100px 20px 60px; text-align: center; }
-    .section-title { font-size: 2rem; color: var(--secondary); text-shadow: 0 0 10px var(--secondary); margin-bottom: 2rem; }
-    .content { max-width: 900px; margin: auto; background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 12px; border: 1px solid var(--primary); box-shadow: 0 0 20px rgba(0,255,255,0.3); backdrop-filter: blur(5px); transition: transform 0.3s, box-shadow 0.3s; }
-    .content:hover { transform: scale(1.02); box-shadow: 0 0 30px rgba(0,255,255,0.6); }
-
-    .skills-bar { margin: 1rem 0; text-align: left; }
-    .skill-name { margin-bottom: 0.3rem; font-weight: bold; }
-    .bar { height: 10px; background: rgba(255, 255, 255, 0.1); border-radius: 5px; overflow: hidden; box-shadow: 0 0 5px var(--primary); }
-    .bar-fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--primary), var(--secondary)); animation: fillBar 2s forwards; }
-    @keyframes fillBar { to { width: var(--width); } }
-
-    .fade-in { opacity: 0; transform: translateY(20px); transition: all 1s; }
-    .fade-in.show { opacity: 1; transform: translateY(0); }
-
-    footer { text-align: center; padding: 2rem; border-top: 1px solid var(--secondary); background: rgba(0, 0, 0, 0.5); color: #aaa; }
-
-    /* Hero glitch */
-    #hero { padding: 140px 20px 80px; text-align: center; }
-    .glitch { font-size: 2.5rem; color: var(--primary); animation: glitch 1s infinite; text-shadow: 2px 2px var(--secondary), -2px -2px var(--secondary); }
-    @keyframes glitch {
-      0%, 100% { text-shadow: 2px 2px var(--secondary), -2px -2px var(--secondary); }
-      20% { text-shadow: -2px -2px var(--primary), 2px 2px var(--secondary); }
-      40% { text-shadow: 2px -2px var(--secondary), -2px 2px var(--primary); }
-      60% { text-shadow: -2px 2px var(--secondary), 2px -2px var(--primary); }
-      80% { text-shadow: 2px 2px var(--primary), -2px -2px var(--secondary); }
+    nav a:hover {
+      color: #f9d423;
     }
-
-    button { margin-top: 2rem; padding: 0.8rem 2rem; background: var(--secondary); border: none; color: #fff; border-radius: 5px; font-size: 1rem; cursor: pointer; text-shadow: 0 0 5px var(--secondary); box-shadow: 0 0 15px var(--secondary); transition: all 0.3s; }
-    button:hover { background: #ff4da6; box-shadow: 0 0 25px #ff4da6; }
-    img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 0 20px var(--primary); }
-
-    #three-container { height: 300px; margin-top: 30px; }
+    header#hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      z-index: 2;
+    }
+    header .highlight {
+      color: #f9d423;
+    }
+    header p {
+      font-size: 1.5rem;
+      margin: 20px 0;
+      z-index: 2;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      color: #fff;
+      background: linear-gradient(45deg, #ff4e50, #f9d423);
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+      z-index: 2;
+      cursor: pointer;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+    }
+    section {
+      padding: 120px 20px;
+      text-align: center;
+      opacity: 0;
+    }
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 12px;
+      transition: transform 0.6s ease, box-shadow 0.6s ease;
+      cursor: pointer;
+      will-change: transform;
+    }
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .skills-grid div {
+      background: rgba(255,255,255,0.05);
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+    .skills-grid div:hover {
+      background: rgba(255,255,255,0.15);
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #1e1e2f;
+      font-size: 0.9rem;
+    }
+    #custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: difference;
+      transition: transform 0.15s ease;
+      z-index: 9999;
+    }
+    canvas#shader-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+    }
   </style>
 </head>
 <body>
+  <nav>
+    <a href="#hero">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#vault">Vault</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-  <!-- HEADER -->
-  <header>
-    <h1>Sandy 🌙</h1>
-    <nav>
-      <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
-      <ul id="nav-list">
-        <li><a href="#about">About</a></li>
-        <li><a href="#medals">Medals</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#collections">Collections</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+  <div id="custom-cursor"></div>
+  <canvas id="shader-bg"></canvas>
+
+  <header id="hero">
+    <h1>Hi, I'm <span class="highlight">Sandy🌙</span></h1>
+    <p id="typing-text"></p>
+    <a href="#about" class="btn">About Me ↓</a>
   </header>
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="glitch">Yo, I'm Sandy 🌙</div>
-    <p>Full-stack Cyberpunk Developer, Digital Marketing Legend, Security Beast & Ultimate Hustler 🚀</p>
-    <button onclick="scrollToSection('contact')">Hire Me</button>
-    <div id="three-container"></div>
+  <section id="about">
+    <h2>✨ About Me</h2>
+    <p>
+      I am a dynamic, multifaceted professional with expertise spanning technical, business, and creative fields. As a security-aware Full-stack Web & Mobile Developer (iOS/Android), I integrate DevSecOps best practices and engineer secure solutions across Cloud, Automation, Data, and Privacy domains.<br><br>
+      Beyond code, I am deeply passionate about digital marketing, business strategy, and side hustles. My journey reflects a commitment to continuous learning, innovation, and empowering others — all fueled by my love for creativity, cybersecurity, and entrepreneurship.
+    </p>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="fade-in">
-    <h2 class="section-title">About Me</h2>
-    <div class="content">
-      <p>Dynamic, multifaceted professional with digital marketing, e-commerce, ClickBank, freelancing, dropshipping, and reselling skills. Master of AI, web dev, graphic design, video editing, bot design, and more.</p>
-      <p>Expert in Linux (ParrotOS), web security, hacking, cracking, Termux, and overall digital security. Always pushing the boundaries!</p>
+  <section id="projects">
+    <h2>🚀 Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">💸 SandyWallet<br>Secure crypto wallet for seamless transactions & strong protection.</div>
+      <div class="project-card">🛡️ CyberShield<br>Advanced security framework for protecting digital infrastructure.</div>
+      <div class="project-card">⚔️ HackerCLI<br>CLI toolset for advanced cybersecurity research & testing.</div>
+      <div class="project-card">🧰 IgDefender<br>Tool to report cyberbullying on Instagram, promoting safety.</div>
+      <div class="project-card">🕉️ VedGyaan Website<br>Spiritual, educational platform to inspire and empower.</div>
+      <div class="project-card">📚 Free Courses Vault<br>Open vault of free, high-quality learning resources.</div>
+      <div class="project-card">⚙️ Many More...<br>Innovative projects under development — stay tuned!</div>
     </div>
   </section>
 
-  <!-- MEDALS -->
-  <section id="medals" class="fade-in">
-    <h2 class="section-title">Medals & Achievements</h2>
-    <div class="content">
-      <p>Security-aware Full-stack Web & Mobile Developer (iOS/Android)</p>
-      <p>DevSecOps expert, integrates security into lifecycles</p>
-      <p>Cloud, Automation, Data & Privacy Security</p>
-      <p>Strong foundation in secure apps and infrastructure</p>
+  <section id="skills">
+    <h2>🛠️ Skills & Expertise</h2>
+    <p>Full-stack Web & Mobile Dev, Cybersecurity, AI, Cloud, UX, Marketing, and more.</p>
+    <div class="skills-grid">
+      <div>Web Development</div>
+      <div>AI & Generative AI</div>
+      <div>Cybersecurity</div>
+      <div>Cloud Computing</div>
+      <div>UX Design</div>
+      <div>Creativity</div>
+      <div>Digital Marketing</div>
+      <div>Content Creation</div>
+      <div>Sales & Business Development</div>
+      <div>Communication</div>
+      <div>Teamwork</div>
+      <div>Adaptability</div>
+      <div>Problem Solving</div>
+      <div>Research & Learning</div>
     </div>
   </section>
 
-  <!-- SKILLS -->
-  <section id="skills" class="fade-in">
-    <h2 class="section-title">Skills</h2>
-    <div class="content">
-      <div class="skills-bar">
-        <div class="skill-name"><i class="fas fa-bolt"></i> Digital Marketing</div>
-        <div class="bar"><div class="bar-fill" style="--width: 95%;"></div></div>
-      </div>
-      <div class="skills-bar">
-        <div class="skill-name"><i class="fas fa-robot"></i> AI & Automation</div>
-        <div class="bar"><div class="bar-fill" style="--width: 90%;"></div></div>
-      </div>
-      <div class="skills-bar">
-        <div class="skill-name"><i class="fas fa-code"></i> Full-stack Dev</div>
-        <div class="bar"><div class="bar-fill" style="--width: 95%;"></div></div>
-      </div>
-      <div class="skills-bar">
-        <div class="skill-name"><i class="fas fa-shield-alt"></i> Cybersecurity</div>
-        <div class="bar"><div class="bar-fill" style="--width: 92%;"></div></div>
-      </div>
-      <div class="skills-bar">
-        <div class="skill-name"><i class="fas fa-pencil-ruler"></i> Design & Editing</div>
-        <div class="bar"><div class="bar-fill" style="--width: 88%;"></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COLLECTIONS -->
-  <section id="collections" class="fade-in">
-    <h2 class="section-title">Collections</h2>
-    <div class="content">
+  <section id="vault">
+    <h2>🗄️ Digital Vault</h2>
+    <p>Welcome to my personal digital vault — a treasure trove of knowledge and rare resources collected over years of deep exploration.</p>
+    <button id="revealVault" class="btn">Open the Vault 🔓</button>
+    <div id="vaultContent" style="display: none; margin-top: 30px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto;">
       <ul>
-        <li>Hacker High School E-Book</li>
-        <li>Top E-books for Beginners (Windows, Linux, Malware, etc.)</li>
-        <li>Adobe Photoshop Pro Course</li>
-        <li>Virtual Assistant, Shopify, WordPress, SEO Masterclass</li>
-        <li>Video Editing, App Dev, Google/Facebook Ads</li>
-        <li>Email Marketing, Content Writing, 3D Animation</li>
-        <li>Premium Bundles, Templates & Mega Digital Resources</li>
+        <li>💾 <strong>1 TB of premium ebooks</strong> — covering AI, cybersecurity, full-stack dev, business, and more.</li>
+        <li>⚡ <strong>4 TB of curated resources & scripts</strong> — private automation tools, hacking scripts, growth kits.</li>
+        <li>🚀 <strong>500+ TB of advanced courses</strong> — exclusive paid masterclasses, rare workshops, secret recordings.</li>
+        <li>🌐 <strong>Countless rare digital assets & tools</strong> — scraping bots, niche SaaS templates, pre-trained AI models.</li>
+        <li>📂 <strong>10,000+ design templates</strong> — Figma, XD, and rare design system files.</li>
+        <li>🧠 <strong>100+ mental models & strategy decks</strong> — used by top Silicon Valley founders and investors.</li>
+        <li>💡 <strong>Private marketing playbooks</strong> — conversion secrets, viral growth tactics, community hacks.</li>
+        <li>🔬 <strong>Deep research datasets</strong> — open & private data on trends, cybersecurity incidents, and AI research.</li>
+        <li>🎮 <strong>Game dev assets</strong> — custom Unity and Unreal engine packs, pixel art collections, rare sound packs.</li>
+        <li>🕹️ <strong>Vintage software archives</strong> — unreleased retro tools, console ROMs, mod kits.</li>
+        <li>🚨 <strong>Red team & blue team kits</strong> — ethical hacking labs, pen-testing labs, custom exploit databases.</li>
+        <li>🧳 <strong>Personal collection of inspiring startup pitches & VC decks</strong>.</li>
+        <li>⚔️ <strong>Legendary scripts for automation & growth hacking</strong>.</li>
+        <li>📺 <strong>Secret webinars & conference talks</strong> — impossible to find elsewhere.</li>
+        <li>🎴 <strong>Rare digital art & NFT packs</strong> — never publicly minted.</li>
+        <li>⚡ <strong>And so much more... the vault is endless!</strong></li>
       </ul>
-    </div>
-    <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_touohxv0.json" background="transparent" speed="1" style="width: 300px; height: 300px; margin: auto;" loop autoplay></lottie-player>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="fade-in">
-    <h2 class="section-title">Contact</h2>
-    <div class="content">
-      <p>💬 Discord: <strong>coderwizy</strong></p>
-      <p>🌐 Let's connect & build futuristic ideas together!</p>
+      <p style="margin-top: 20px;">💬 Name: <strong>Sandy🌙</strong></p>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <section id="contact">
+    <h2>✉️ Contact</h2>
+    <p>💻 GitHub: <a href="https://github.com/coderwizy" target="_blank" style="color:#f9d423;">github.com/coderwizy</a><br>
+    💬 Discord: click reveal ~ yumi.uwu</p>
+    <p>💥 Bonus Vibe: I’m also a solopreneur, business guide, side hustle enthusiast. When not building or mentoring, I’m exploring ideas, gaming (Minecraft 🥰), or hacking my next big thing.</p>
+  </section>
+
   <footer>
-    &copy; 2025 Sandy 🌙. All rights reserved.
+    &copy; 2025 Sandy🌙. All rights reserved.
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script>
-    function scrollToSection(id) {
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    // Typing effect
+    const text = "Galactic Coder | Security Engineer | Creator | Mentor";
+    let i = 0;
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("typing-text").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 70);
+      }
     }
+    window.onload = typeWriter;
 
-    const toggle = document.getElementById('menu-toggle');
-    const navList = document.getElementById('nav-list');
-    toggle.addEventListener('click', () => {
-      navList.classList.toggle('active');
+    // GSAP reveal
+    gsap.utils.toArray("section").forEach(section => {
+      gsap.to(section, {
+        opacity: 1,
+        y: -50,
+        duration: 1.5,
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+        }
+      });
     });
 
-    const fadeEls = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
-    }, { threshold: 0.3 });
-    fadeEls.forEach(el => observer.observe(el));
-
-    // Three.js 3D element
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer.setSize(window.innerWidth, 300);
-    document.getElementById('three-container').appendChild(renderer.domElement);
-
-    const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: true });
-    const torusKnot = new THREE.Mesh(geometry, material);
-    scene.add(torusKnot);
-    camera.position.z = 50;
-
-    function animate() {
-      requestAnimationFrame(animate);
-      torusKnot.rotation.x += 0.01;
-      torusKnot.rotation.y += 0.01;
-      renderer.render(scene, camera);
+    // Shader bg
+    const canvas = document.getElementById('shader-bg');
+    const ctx = canvas.getContext('2d');
+    let time = 0;
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     }
-    animate();
+    window.addEventListener('resize', resize);
+    resize();
+    function animateShader() {
+      time += 0.01;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < 100; i++) {
+        let x = Math.sin(i + time) * 200 + canvas.width / 2;
+        let y = Math.cos(i + time) * 200 + canvas.height / 2;
+        ctx.beginPath();
+        ctx.arc(x, y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = 'hsl(' + (i * 3 + time * 50) + ', 70%, 60%)';
+        ctx.fill();
+      }
+      requestAnimationFrame(animateShader);
+    }
+    animateShader();
+
+    // Cursor
+    const cursor = document.getElementById("custom-cursor");
+    document.addEventListener("mousemove", e => {
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+    });
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach(card => {
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        card.style.transform = `rotateY(${x / 20}deg) rotateX(${-y / 20}deg) scale(1.05)`;
+      });
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "rotateY(0deg) rotateX(0deg) scale(1)";
+      });
+    });
+
+    // Vault toggle
+    document.getElementById('revealVault').addEventListener('click', function() {
+      const vault = document.getElementById('vaultContent');
+      if (vault.style.display === "none") {
+        vault.style.display = "block";
+        gsap.from(vault, { opacity: 0, y: 50, duration: 1.2 });
+        this.innerText = "Hide the Vault 🔒";
+      } else {
+        vault.style.display = "none";
+        this.innerText = "Open the Vault 🔓";
+      }
+    });
   </script>
 </body>
 </html>
