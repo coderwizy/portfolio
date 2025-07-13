@@ -3,27 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sandy🌙 - Galactic God Mode Portfolio</title>
+  <title>Sandy🌙 - Galactic Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      overflow-x: hidden;
       font-family: "Poppins", sans-serif;
       scroll-behavior: smooth;
-      background: #0f0c29;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: #fff;
+      overflow-x: hidden;
     }
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(0,0,0,0.5);
+      background: rgba(15, 15, 15, 0.7);
       display: flex;
       justify-content: center;
       padding: 10px 0;
       z-index: 20;
+      backdrop-filter: blur(8px);
     }
     nav a {
       color: #fff;
@@ -42,21 +43,17 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      position: relative;
-      overflow: hidden;
     }
     header h1 {
       font-size: 3rem;
       margin: 0;
-      z-index: 2;
     }
     header .highlight {
       color: #f9d423;
     }
     header p {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       margin: 20px 0;
-      z-index: 2;
     }
     .btn {
       display: inline-block;
@@ -68,19 +65,18 @@
       border-radius: 8px;
       text-decoration: none;
       transition: transform 0.3s ease;
-      z-index: 2;
       cursor: pointer;
     }
     .btn:hover {
       transform: scale(1.05);
     }
     section {
-      padding: 120px 20px;
+      padding: 100px 20px;
       text-align: center;
       opacity: 0;
     }
     section h2 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       margin-bottom: 20px;
     }
     .projects-grid {
@@ -93,9 +89,12 @@
       background: rgba(255, 255, 255, 0.05);
       padding: 20px;
       border-radius: 12px;
-      transition: transform 0.6s ease, box-shadow 0.6s ease;
+      transition: transform 0.5s, box-shadow 0.5s;
       cursor: pointer;
-      will-change: transform;
+    }
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     }
     .skills-grid {
       display: flex;
@@ -117,31 +116,10 @@
     footer {
       text-align: center;
       padding: 20px;
-      background: #1e1e2f;
+      background: rgba(15,15,15,0.9);
       font-size: 0.9rem;
     }
-    #custom-cursor {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 20px;
-      height: 20px;
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      mix-blend-mode: difference;
-      transition: transform 0.15s ease;
-      z-index: 9999;
-    }
-    canvas#shader-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1;
-      width: 100%;
-      height: 100%;
-    }
+    button:focus { outline: none; }
   </style>
 </head>
 <body>
@@ -153,9 +131,6 @@
     <a href="#vault">Vault</a>
     <a href="#contact">Contact</a>
   </nav>
-
-  <div id="custom-cursor"></div>
-  <canvas id="shader-bg"></canvas>
 
   <header id="hero">
     <h1>Hi, I'm <span class="highlight">Sandy🌙</span></h1>
@@ -235,7 +210,7 @@
   <section id="contact">
     <h2>✉️ Contact</h2>
     <p>💻 GitHub: <a href="https://github.com/coderwizy" target="_blank" style="color:#f9d423;">github.com/coderwizy</a><br>
-    💬 Discord: click reveal ~ yumi.uwu</p>
+    💬 Discord: yumi.uwu</p>
     <p>💥 Bonus Vibe: I’m also a solopreneur, business guide, side hustle enthusiast. When not building or mentoring, I’m exploring ideas, gaming (Minecraft 🥰), or hacking my next big thing.</p>
   </section>
 
@@ -243,9 +218,7 @@
     &copy; 2025 Sandy🌙. All rights reserved.
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script>
-    // Typing effect
     const text = "Galactic Coder | Security Engineer | Creator | Mentor";
     let i = 0;
     function typeWriter() {
@@ -257,74 +230,26 @@
     }
     window.onload = typeWriter;
 
-    // GSAP reveal
-    gsap.utils.toArray("section").forEach(section => {
-      gsap.to(section, {
-        opacity: 1,
-        y: -50,
-        duration: 1.5,
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%",
-        }
-      });
-    });
-
-    // Shader bg
-    const canvas = document.getElementById('shader-bg');
-    const ctx = canvas.getContext('2d');
-    let time = 0;
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resize);
-    resize();
-    function animateShader() {
-      time += 0.01;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < 100; i++) {
-        let x = Math.sin(i + time) * 200 + canvas.width / 2;
-        let y = Math.cos(i + time) * 200 + canvas.height / 2;
-        ctx.beginPath();
-        ctx.arc(x, y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = 'hsl(' + (i * 3 + time * 50) + ', 70%, 60%)';
-        ctx.fill();
-      }
-      requestAnimationFrame(animateShader);
-    }
-    animateShader();
-
-    // Cursor
-    const cursor = document.getElementById("custom-cursor");
-    document.addEventListener("mousemove", e => {
-      cursor.style.left = e.clientX + "px";
-      cursor.style.top = e.clientY + "px";
-    });
-    const cards = document.querySelectorAll('.project-card');
-    cards.forEach(card => {
-      card.addEventListener("mousemove", (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        card.style.transform = `rotateY(${x / 20}deg) rotateX(${-y / 20}deg) scale(1.05)`;
-      });
-      card.addEventListener("mouseleave", () => {
-        card.style.transform = "rotateY(0deg) rotateX(0deg) scale(1)";
-      });
-    });
-
-    // Vault toggle
     document.getElementById('revealVault').addEventListener('click', function() {
       const vault = document.getElementById('vaultContent');
       if (vault.style.display === "none") {
         vault.style.display = "block";
-        gsap.from(vault, { opacity: 0, y: 50, duration: 1.2 });
         this.innerText = "Hide the Vault 🔒";
       } else {
         vault.style.display = "none";
         this.innerText = "Open the Vault 🔓";
       }
+    });
+
+    const sections = document.querySelectorAll("section");
+    window.addEventListener("scroll", () => {
+      sections.forEach(sec => {
+        const top = window.scrollY;
+        const offset = sec.offsetTop - 400;
+        if (top > offset) {
+          sec.style.opacity = 1;
+        }
+      });
     });
   </script>
 </body>
