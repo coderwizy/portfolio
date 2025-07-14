@@ -12,49 +12,77 @@ Beyond code, I'm deeply passionate about digital marketing, business strategy, a
 
 ---
 
+## 🏆 Trophy Cabinet
+
+| 🥇 Title                | 💥 Achievement                             |
+|-------------------------|------------------------------------------|
+| 🌎 CFE (Coding Fame of Earth) | Winner of global portfolio contest    |
+| 💻 100+ Projects         | Across web, mobile, AI & security       |
+| 🚀 500+ TB Resources    | Exclusive private digital vault         |
+| 🛡️ Security Innovator  | Advanced cybersecurity frameworks       |
+| 🎨 Creative Coder      | Built multiple design-first products    |
+
+---
+
 ## 💎 Features
 
-- 🎨 Aesthetic black–grey gradient background
-- 🛡️ Security-focused personal brand
-- ✨ Smooth animations & reveal transitions
-- ⚡ Glitch typing effect tagline: *Security innovator 🛡️ | Creative Coder 🛜*
-- 🖥️ Fully responsive design (perfect on mobile too!)
-- 🗄️ Interactive digital vault reveal
-- 📂 Projects grid with "More Projects" reveal linked to GitHub
-- 💬 Contact section with GitHub & Discord
+✨ Aesthetic black–grey gradient background  
+🛡️ Security-focused personal brand  
+⚡ Glitch typing effect tagline: *Security innovator 🛡️ | Creative Coder 🛜*  
+🎨 Smooth animations & cosmic transitions  
+📱 Fully responsive (mobile-ready)  
+🗄️ Interactive digital vault reveal  
+📂 Projects grid with "More Projects" link to GitHub  
+💬 Contact section with links
 
 ---
 
 ## 🧰 Tech Stack
 
-- **HTML5**
-- **CSS3** (Advanced, gradients, animations, glass effects)
-- **JavaScript (Vanilla)**
+| 🚀 Frontend   | 💾 Backend   | ☁️ Cloud / DevOps   | 🛡️ Security  |
+|---------------|--------------|---------------------|-------------|
+| HTML5         | Node.js      | AWS                 | Pen-Testing |
+| CSS3 (Advanced)| Python      | Azure               | Red Team    |
+| JavaScript    |              | CI/CD Automation   | Blue Team   |
+
+---
+
+## 🛠️ Skills
+
+- 💻 Full-stack Development
+- 🛡️ Cybersecurity & Security Engineering
+- ☁️ Cloud & DevSecOps
+- 🤖 AI & Generative AI
+- 🎨 UX Design & Creativity
+- 📈 Business Strategy & Digital Marketing
+- 🎥 Content Creation
+- 💬 Communication & Mentoring
+
+---
+
+## 📊 GitHub Stats
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=coderwizy&show_icons=true&theme=tokyonight" alt="Sandy's GitHub stats" />
+  <img src="https://streak-stats.demolab.com?user=coderwizy&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
+</p>
 
 ---
 
 ## 💥 Sections
 
 - **Home** — Hero with glitch tagline and call to action
-- **About Me** — Introduction & philosophy
-- **Projects** — Showcasing top creative & technical works
-- **Skills & Expertise** — Highlighting full skill stack
-- **Digital Vault** — Massive hidden resource trove
-- **Contact** — Ways to connect
+- **About Me** — Intro & philosophy
+- **Projects** — Showcasing creative & technical works
+- **Skills & Expertise** — Core stack
+- **Digital Vault** — Hidden cosmic resources
+- **Contact** — Links & vibe
 
 ---
 
 ## 🔗 Live Preview
 
-Check it out live: [GitHub Pages Link](https://your-github-username.github.io/your-repo-name)
-
----
-
-## 📸 Demo
-
-> *"Cosmic code awakening..."*
-
-![Anime Demo](./demo.gif)
+Check it out live: [GitHub Pages Link](https://coderwizy.github.io/portfolio)
 
 ---
 
