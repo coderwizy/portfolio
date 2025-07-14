@@ -3,38 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sandy🌙 - Galactic Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <title>Sandy🌙 - CFE Galactic Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      font-family: "Poppins", sans-serif;
+      font-family: 'Inter', sans-serif;
       scroll-behavior: smooth;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #fff;
+      background: linear-gradient(135deg, #111111, #333333);
+      color: #eee;
       overflow-x: hidden;
     }
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(15, 15, 15, 0.7);
+      background: rgba(0, 0, 0, 0.6);
       display: flex;
       justify-content: center;
       padding: 10px 0;
-      z-index: 20;
-      backdrop-filter: blur(8px);
+      z-index: 100;
+      backdrop-filter: blur(10px);
     }
     nav a {
-      color: #fff;
-      margin: 0 15px;
+      color: #eee;
+      margin: 6px 10px;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 0.9rem;
       transition: color 0.3s;
     }
     nav a:hover {
-      color: #f9d423;
+      color: #ff4e50;
     }
     header#hero {
       height: 100vh;
@@ -43,22 +44,26 @@
       justify-content: center;
       align-items: center;
       text-align: center;
+      padding: 0 20px;
+      overflow: hidden;
+      position: relative;
     }
     header h1 {
-      font-size: 3rem;
+      font-size: 2.2rem;
       margin: 0;
     }
     header .highlight {
-      color: #f9d423;
+      color: #ff4e50;
     }
     header p {
-      font-size: 1.2rem;
-      margin: 20px 0;
+      font-size: 1.1rem;
+      margin: 15px 0;
+      max-width: 500px;
     }
     .btn {
       display: inline-block;
       margin-top: 20px;
-      padding: 12px 24px;
+      padding: 10px 22px;
       color: #fff;
       background: linear-gradient(45deg, #ff4e50, #f9d423);
       border: none;
@@ -71,58 +76,67 @@
       transform: scale(1.05);
     }
     section {
-      padding: 100px 20px;
+      padding: 90px 20px;
       text-align: center;
       opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
     }
     section h2 {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #f9d423;
     }
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
       margin-top: 30px;
     }
     .project-card {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 20px;
+      background: rgba(255,255,255,0.05);
+      padding: 15px;
       border-radius: 12px;
-      transition: transform 0.5s, box-shadow 0.5s;
+      transition: transform 0.4s, box-shadow 0.4s;
       cursor: pointer;
+      backdrop-filter: blur(8px);
     }
     .project-card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-5px) scale(1.03);
       box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     }
     .skills-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
       margin-top: 20px;
     }
     .skills-grid div {
       background: rgba(255,255,255,0.05);
-      padding: 10px 15px;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      transition: background 0.3s;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      backdrop-filter: blur(5px);
+      transition: transform 0.3s;
     }
     .skills-grid div:hover {
-      background: rgba(255,255,255,0.15);
+      transform: scale(1.05);
     }
     footer {
       text-align: center;
       padding: 20px;
-      background: rgba(15,15,15,0.9);
-      font-size: 0.9rem;
+      background: rgba(0,0,0,0.6);
+      font-size: 0.85rem;
+      color: #aaa;
     }
     button:focus { outline: none; }
+    ul { padding-left: 20px; text-align: left; }
+    ul li { margin-bottom: 10px; }
   </style>
 </head>
 <body>
+
   <nav>
     <a href="#hero">Home</a>
     <a href="#about">About</a>
@@ -134,7 +148,7 @@
 
   <header id="hero">
     <h1>Hi, I'm <span class="highlight">Sandy🌙</span></h1>
-    <p id="typing-text"></p>
+    <p id="glitch-text"></p>
     <a href="#about" class="btn">About Me ↓</a>
   </header>
 
@@ -156,7 +170,9 @@
       <div class="project-card">🕉️ VedGyaan Website<br>Spiritual, educational platform to inspire and empower.</div>
       <div class="project-card">📚 Free Courses Vault<br>Open vault of free, high-quality learning resources.</div>
       <div class="project-card">⚙️ Many More...<br>Innovative projects under development — stay tuned!</div>
+      <div class="project-card" id="moreProjects" style="background: rgba(255,255,255,0.08); font-weight: bold;">✨ More Projects</div>
     </div>
+    <p id="moreProjectsMessage" style="display: none; margin-top: 15px; font-weight: bold; color: #f9d423;">All the projects are available on GitHub!</p>
   </section>
 
   <section id="skills">
@@ -184,24 +200,13 @@
     <h2>🗄️ Digital Vault</h2>
     <p>Welcome to my personal digital vault — a treasure trove of knowledge and rare resources collected over years of deep exploration.</p>
     <button id="revealVault" class="btn">Open the Vault 🔓</button>
-    <div id="vaultContent" style="display: none; margin-top: 30px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto;">
+    <div id="vaultContent" style="display: none; margin-top: 30px; max-width: 90%; margin-left: auto; margin-right: auto;">
       <ul>
-        <li>💾 <strong>1 TB of premium ebooks</strong> — covering AI, cybersecurity, full-stack dev, business, and more.</li>
-        <li>⚡ <strong>4 TB of curated resources & scripts</strong> — private automation tools, hacking scripts, growth kits.</li>
-        <li>🚀 <strong>500+ TB of advanced courses</strong> — exclusive paid masterclasses, rare workshops, secret recordings.</li>
-        <li>🌐 <strong>Countless rare digital assets & tools</strong> — scraping bots, niche SaaS templates, pre-trained AI models.</li>
-        <li>📂 <strong>10,000+ design templates</strong> — Figma, XD, and rare design system files.</li>
-        <li>🧠 <strong>100+ mental models & strategy decks</strong> — used by top Silicon Valley founders and investors.</li>
-        <li>💡 <strong>Private marketing playbooks</strong> — conversion secrets, viral growth tactics, community hacks.</li>
-        <li>🔬 <strong>Deep research datasets</strong> — open & private data on trends, cybersecurity incidents, and AI research.</li>
-        <li>🎮 <strong>Game dev assets</strong> — custom Unity and Unreal engine packs, pixel art collections, rare sound packs.</li>
-        <li>🕹️ <strong>Vintage software archives</strong> — unreleased retro tools, console ROMs, mod kits.</li>
-        <li>🚨 <strong>Red team & blue team kits</strong> — ethical hacking labs, pen-testing labs, custom exploit databases.</li>
-        <li>🧳 <strong>Personal collection of inspiring startup pitches & VC decks</strong>.</li>
-        <li>⚔️ <strong>Legendary scripts for automation & growth hacking</strong>.</li>
-        <li>📺 <strong>Secret webinars & conference talks</strong> — impossible to find elsewhere.</li>
-        <li>🎴 <strong>Rare digital art & NFT packs</strong> — never publicly minted.</li>
-        <li>⚡ <strong>And so much more... the vault is endless!</strong></li>
+        <li>💾 <strong>1 TB of premium ebooks</strong> — AI, cybersecurity, dev, business & more.</li>
+        <li>⚡ <strong>4 TB of private resources & scripts</strong>.</li>
+        <li>🚀 <strong>500+ TB of advanced courses</strong>.</li>
+        <li>🌐 <strong>Rare digital assets, scraping bots, SaaS templates, AI models.</strong></li>
+        <li>...and so much more, the vault is endless!</li>
       </ul>
       <p style="margin-top: 20px;">💬 Name: <strong>Sandy🌙</strong></p>
     </div>
@@ -211,7 +216,7 @@
     <h2>✉️ Contact</h2>
     <p>💻 GitHub: <a href="https://github.com/coderwizy" target="_blank" style="color:#f9d423;">github.com/coderwizy</a><br>
     💬 Discord: yumi.uwu</p>
-    <p>💥 Bonus Vibe: I’m also a solopreneur, business guide, side hustle enthusiast. When not building or mentoring, I’m exploring ideas, gaming (Minecraft 🥰), or hacking my next big thing.</p>
+    <p>💥 Bonus Vibe: Solopreneur, business guide, side hustle enthusiast. When not building or mentoring, I’m gaming (Minecraft 🥰), or hacking my next big thing.</p>
   </section>
 
   <footer>
@@ -219,17 +224,32 @@
   </footer>
 
   <script>
-    const text = "Galactic Coder | Security Engineer | Creator | Mentor";
+    const glitchText = document.getElementById('glitch-text');
+    const text = "Security innovator 🛡️ | Creative Coder 🛜";
+    let displayText = '';
     let i = 0;
-    function typeWriter() {
+    function glitch() {
       if (i < text.length) {
-        document.getElementById("typing-text").innerHTML += text.charAt(i);
+        displayText += text[i];
+        glitchText.innerText = displayText + (Math.random() > 0.5 ? '█' : '');
         i++;
-        setTimeout(typeWriter, 70);
+        setTimeout(glitch, 70);
+      } else {
+        glitchText.innerText = displayText;
       }
     }
-    window.onload = typeWriter;
-
+    glitch();
+    const sections = document.querySelectorAll("section");
+    window.addEventListener("scroll", () => {
+      sections.forEach(sec => {
+        const top = window.scrollY;
+        const offset = sec.offsetTop - 500;
+        if (top > offset) {
+          sec.style.opacity = 1;
+          sec.style.transform = "translateY(0)";
+        }
+      });
+    });
     document.getElementById('revealVault').addEventListener('click', function() {
       const vault = document.getElementById('vaultContent');
       if (vault.style.display === "none") {
@@ -240,16 +260,9 @@
         this.innerText = "Open the Vault 🔓";
       }
     });
-
-    const sections = document.querySelectorAll("section");
-    window.addEventListener("scroll", () => {
-      sections.forEach(sec => {
-        const top = window.scrollY;
-        const offset = sec.offsetTop - 400;
-        if (top > offset) {
-          sec.style.opacity = 1;
-        }
-      });
+    document.getElementById('moreProjects').addEventListener('click', function() {
+      const msg = document.getElementById('moreProjectsMessage');
+      msg.style.display = msg.style.display === "none" ? "block" : "none";
     });
   </script>
 </body>
